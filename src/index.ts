@@ -19,7 +19,10 @@ import {
   locationTimeDisplay,
 } from './utils';
 
-const getReviewsButton = document.querySelector('#get-reviews') as HTMLButtonElement | null;
+
+  
+  const getReviewsButton = document.querySelector('#get-reviews') as HTMLButtonElement | null;
+  const reviewImage = document.querySelector('#review-image') as HTMLImageElement | null;
 
 
 const reviews: Review[] = [
@@ -43,12 +46,19 @@ const properties = [
   { name: 'London Flat', price: 23, image: 'https://static01.nyt.com/images/2020/08/30/realestate/26IHH-POLAND-slide-NZC6/26IHH-POLAND-slide-NZC6-superJumbo.jpg?quality=75&auto=webp&disable=upscale' }, 
 ];
 
+if (reviewImage) {
+  reviewImage.src = 'https://ephemeralnewyork.wordpress.com/wp-content/uploads/2017/12/cottagegreenwichstreetnyt.png?w=450&h=309'; 
+  reviewImage.alt = 'A banner for reviews';
+} else {
+  console.warn("Element with ID 'review-image' not found!");
+}
+
 if (propertyListDisplay) {
   propertyListDisplay.innerHTML = properties.map(property => `
     <div class="property-card">
       <img src="${property.image}" alt="${property.name}">
       <p>${property.name}</p>
-      <p>${property.price}</p>
+      <p>${property.price}/per night</p>
     </div>
   `).join('');
 } else {

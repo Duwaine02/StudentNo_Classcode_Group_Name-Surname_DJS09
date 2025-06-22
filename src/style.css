@@ -73,10 +73,24 @@ body {
   background-color: #4CAF50;
   color: white;
   border: none;
-  border-radius: 5px;
+  border-radius: 10px;
   cursor: pointer;
 }
 
 #get-reviews:hover {
-  background-color: #45a049;
+  background-color: #ffcccc;
+}
+#review-image {
+  max-width: 100%;
+  height: auto;
+  margin: 20px auto;
+  display: block;
+  border-radius: 5px;
+}
+.divider {
+  width: 700px;           
+  height: 2px;           
+  background-color: #ffcccc; 
+  border: none;          
+  margin: 10px auto;     
 }
