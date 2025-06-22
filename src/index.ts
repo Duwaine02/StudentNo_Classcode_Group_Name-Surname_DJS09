@@ -1,7 +1,14 @@
 // Number Types mini-challenge 10 10.2
 // Write a function that will only accept numbers and attend to
 // all TypeScript weakness flags.
-// : number
+// : 
+
+function addNumbers (a:number, b:number):number {
+  return a + b
+
+}
+
+console.log(addNumbers(5,6))
 const reviewTotalDisplay = document.querySelector("#reviews");
 
 const reviews = [
