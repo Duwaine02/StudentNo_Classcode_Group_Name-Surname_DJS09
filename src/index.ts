@@ -11,7 +11,7 @@ function addNumbers (a:number, b:number):number {
 console.log(addNumbers(5,6))
 
 
-type Reviews = {
+type Review = {
   name: string;
   stars: number;
   loyaltyUser: boolean;
@@ -19,7 +19,7 @@ type Reviews = {
 }
 const reviewTotalDisplay = document.querySelector("#reviews");
 
-const reviews = [
+const reviews: Review[] = [
   {
     name: "Sheia",
     stars: 5,
@@ -39,3 +39,7 @@ const reviews = [
     date: "27-03-2021",
   },
 ];
+
+if (reviewTotalDisplay) {
+  reviewTotalDisplay.innerHTML = `${reviews.length} reviews`;
+}
