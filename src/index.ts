@@ -43,7 +43,8 @@ const reviews: Review[] = [
 const reviewTotalDisplay = document.querySelector("#reviews") as  HTMLElement;
 const returningUserDisplay = document.querySelector("#returning-user") as  HTMLElement ;
 const userNameDisplay = document.querySelector("#user") as  HTMLElement ;
-
+const propertyListDisplay = document.querySelector("#property-list") as HTMLElement;
+const locationTimeDisplay = document.querySelector("#location-time") as HTMLElement;
 if (reviewTotalDisplay) {
   reviewTotalDisplay.innerHTML = `${reviews.length} reviews`;
 } else {
@@ -63,4 +64,32 @@ function showReviewTotal(value: number, reviewer: string, isLoyalty: boolean) {
 if (reviews.length > 0) {
   const lastReview = reviews[reviews.length - 1];
   showReviewTotal(reviews.length, lastReview.name, lastReview.loyaltyUser);
+}
+
+if (userNameDisplay && reviews.length > 0) {
+  userNameDisplay.innerHTML = reviews[reviews.length - 1].name;
+}
+
+if (returningUserDisplay && reviews.length > 0) {
+  returningUserDisplay.innerHTML = reviews[reviews.length - 1].loyaltyUser
+    ? "back"
+    : "New User";
+}
+
+const properties = [
+  { name: "Colombian Shack", price: "45/night", image: "https://www.hrw.org/sites/default/files/multimedia_images_2017/201710americas_colombia_guajira.jpg" },
+  { name: "Polish Cottage", price: "34/night", image: "https://static01.nyt.com/images/2020/08/30/realestate/26IHH-POLAND-slide-NZC6/26IHH-POLAND-slide-NZC6-superJumbo.jpg?quality=75&auto=webp" },
+  { name: "London Flat", price: "23/night", image: "https://www.knightfrank.com/globalassets/the-view-images/london-apartments-with-gardens/little-venice-1.jpg" },
+];
+
+if (propertyListDisplay) {
+  propertyListDisplay.innerHTML = properties.map(property => `
+    <div class="property-card">
+      <img src="${property.image}" alt="${property.name}">
+      <p>${property.name}</p>
+      <p>${property.price}</p>
+    </div>
+  `).join('');
+} else {
+  console.warn("Element with ID 'property-list' not found!");
 }
