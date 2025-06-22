@@ -17,7 +17,7 @@ type Review = {
   loyaltyUser: boolean;
   date: string;
 }
-const reviewTotalDisplay = document.querySelector("#reviews");
+
 
 const reviews: Review[] = [
   {
@@ -40,6 +40,27 @@ const reviews: Review[] = [
   },
 ];
 
+const reviewTotalDisplay = document.querySelector("#reviews") as  HTMLElement;
+const returningUserDisplay = document.querySelector("#returning-user") as  HTMLElement ;
+const userNameDisplay = document.querySelector("#user") as  HTMLElement ;
+
 if (reviewTotalDisplay) {
   reviewTotalDisplay.innerHTML = `${reviews.length} reviews`;
+} else {
+  console.warn("Element with ID 'reviews' not found!");
+}
+
+
+function showReviewTotal(value: number, reviewer: string, isLoyalty: boolean) {
+    const iconDisplay = isLoyalty ? '⭐' : '';
+    if (reviewTotalDisplay) {
+        reviewTotalDisplay.innerHTML = `review total ${value} | last reviewed by ${reviewer} ${iconDisplay}`;
+    } else {
+        console.warn("Element with ID 'reviews' not found!");
+    }
+}
+
+if (reviews.length > 0) {
+  const lastReview = reviews[reviews.length - 1];
+  showReviewTotal(reviews.length, lastReview.name, lastReview.loyaltyUser);
 }
