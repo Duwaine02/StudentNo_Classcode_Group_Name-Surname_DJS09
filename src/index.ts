@@ -9,6 +9,14 @@ function addNumbers (a:number, b:number):number {
 }
 
 console.log(addNumbers(5,6))
+
+
+type Reviews = {
+  name: string;
+  stars: number;
+  loyaltyUser: boolean;
+  date: string;
+}
 const reviewTotalDisplay = document.querySelector("#reviews");
 
 const reviews = [
